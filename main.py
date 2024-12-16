@@ -116,12 +116,12 @@ class App:
         if column == '#7':
             task_data = self.list_elemts.item(
                 item_id, 'values')
-            self.eliminar(int(task_data[0]))
+            self.delete(int(task_data[0]))
 
         elif column == '#6':
             task_data = self.list_elemts.item(
                 item_id, 'values')
-            self.editar(int(task_data[0]))
+            self.update_status(int(task_data[0]))
 
     def get_row(self, event):
         """
@@ -151,13 +151,13 @@ class App:
         lbl_status = Label(pop, font=("Arial", 12,), text=f"Estado: {done}")
         lbl_status.place(x=40, y=240)
         btn_change = Button(pop, text="Completada", relief="flat", background="#00CE54",
-                            foreground="white", command=lambda: self.editar(task_id))
+                            foreground="white", command=lambda: self.update_status(task_id))
         btn_change.place(x=180, y=280, width=90)
         btn_delete = Button(pop, text="Eliminar", relief="flat", background="red",
-                            foreground="white", command=lambda: self.eliminar(task_id))
+                            foreground="white", command=lambda: self.delete(task_id))
         btn_delete.place(x=290, y=280, width=90)
 
-    def eliminar(self, n):
+    def delete(self, n):
         """
         Elimina una tarea
         """
@@ -169,7 +169,7 @@ class App:
         self.draw_list()
         self.clear_entry()
 
-    def editar(self, task_id):
+    def update_status(self, task_id):
         """
         Actualiza el estado de una tarea
         """
